@@ -68,7 +68,6 @@ class Map extends React.Component {
   }
 
   mapAddPopup(map, data) { // Adds a popup on click for a point of interest.
-    // let map = this.map
     let validSourceTypes = {
       "vector": "vector",
       "raster": "raster",
