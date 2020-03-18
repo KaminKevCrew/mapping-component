@@ -32,7 +32,7 @@ class Map extends React.Component {
       [-122.49163627624512, 37.832564787218985],
       [-122.49223709106445, 37.83337825839438],
       [-122.49378204345702, 37.83368330777276]
-    ];
+    ]; // Test coordinates for showing route on map.
     this.data = {
       'type': 'geojson',
         'data': {
@@ -43,7 +43,7 @@ class Map extends React.Component {
               'properties': {
                 'description':
                   '<strong>Make it Mount Pleasant</strong>',
-                'icon': 'theatre'
+                'icon': 'pitch'
               },
               'geometry': {
                 'type': 'Point',
@@ -55,7 +55,7 @@ class Map extends React.Component {
               'properties': {
                 'description':
                   '<strong>Mad Men Season Five Finale Watch Party</strong>',
-                'icon': 'theatre'
+                'icon': 'dog-park'
               },
               'geometry': {
                 'type': 'Point',
@@ -64,10 +64,10 @@ class Map extends React.Component {
             },
           ]
         }
-    }
+    } // Test data for showing points of interest.
   }
 
-  mapAddPopup(map, data) {
+  mapAddPopup(map, data) { // Adds a popup on click for a point of interest.
     // let map = this.map
     let validSourceTypes = {
       "vector": "vector",
@@ -92,9 +92,6 @@ class Map extends React.Component {
         var coordinates = e.features[0].geometry.coordinates.slice();
         var description = e.features[0].properties.description;
 
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
@@ -118,8 +115,6 @@ class Map extends React.Component {
   }
 
   mapAddRoute(map, coordinates) {
-    // let map = this.map
-    
     map.on('load', function () { // Adds a source to get coordinates from
       map.addSource('route', {
         'type': 'geojson',
@@ -150,7 +145,6 @@ class Map extends React.Component {
   }
 
   mapAddStyle(map) {
-    // let map = this.map
     map.on('load', function() {
       // adds zoom/rotate map controls
       map.addControl(new mapboxgl.NavigationControl());
@@ -170,7 +164,7 @@ class Map extends React.Component {
     return map
   }
 
-  mapBuilder(map) {
+  mapBuilder(map) { // Adds each element to the map
     this.mapAddStyle(map);
     this.mapAddRoute(map, this.coordinates);
     this.mapAddPopup(map, this.data);
