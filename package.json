@@ -1,0 +1,33 @@
+{
+  "name": "mapping-component",
+  "version": "1.0.0",
+  "description": "A reusable component that allows for easy mapping of .gpx files.",
+  "main": "entry.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --mode=development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaminKevCrew/mapping-component.git"
+  },
+  "keywords": [],
+  "author": "Kevin Kaminski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaminKevCrew/mapping-component/issues"
+  },
+  "homepage": "https://github.com/KaminKevCrew/mapping-component#readme",
+  "dependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "mapbox-gl": "^1.8.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-redux": "^7.2.0",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
