@@ -5,17 +5,12 @@ import mapboxgl from 'mapbox-gl'
 class Map extends React.Component {
   constructor(props) {
     super(props);
-    // your code here
   }
 
-  componentDidMount() {
-    this.map()
-  }
-
-  map(container="map", center=[-122, 38], zoom=9, interactive=true) {
+  componentDidMount(container = "map", center = [-122, 38], zoom = 9, interactive = true) {
     mapboxgl.accessToken = 'pk.eyJ1Ijoia2FtaW5rZXZjcmV3IiwiYSI6ImNrMGUydnoxbzBkbHgzY3IxOGZmcWN6dHAifQ.K2wzWQ-7KEhyUxXFR48aTA';
 
-    let map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: container,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: center,
@@ -23,7 +18,10 @@ class Map extends React.Component {
       interactive: interactive
     });
 
+    let map = this.map
+
     map.on('load', function () {
+      map.addControl(new mapboxgl.NavigationControl());
       map.addLayer({
         id: 'rpd_parks',
         type: 'fill',
@@ -31,7 +29,7 @@ class Map extends React.Component {
           type: "vector",
           url: "mapbox://mapbox.3o7ubwm8"
         },
-        'source-layer': 'RPD-Parks',
+        'source-layer': 'RPD_Parks',
         layout: {
           visibility: 'visible'
         },
@@ -42,7 +40,18 @@ class Map extends React.Component {
     })
   };
 
+  mapAddSource(map) {
+    let validSourceTypes = {
+      vector,
+      raster,
+      geojson,
+      image,
+      video
+    }
+    map.addSource('places', {
 
+    })
+  }
 
   render() {
     return (
