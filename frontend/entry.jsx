@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Map from './components/map.jsx';
+import Map from './components/map/map.jsx';
 
 document.addEventListener("DOMContentLoaded", () => {
-  const container = "map" 
-  const center = [-122, 38]
-  const zoom = 9
-  const interactive = true
+  let props = {
+    container: "map", 
+    center: [-122, 38],
+    zoom: 9,
+    interactive: true,
+    coordinates: [[-122, 38], [-121, 37], [-120, 36]],
+    data: undefined
+  }
+  
   const root = document.getElementById("root");
-  ReactDOM.render(<Map/>, root);
+  ReactDOM.render(<Map {...props}/>, root);
 });
